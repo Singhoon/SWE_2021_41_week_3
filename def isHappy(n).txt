@@ -1,17 +1,17 @@
 def isHappy(n):
-  k = str(n)
-  sum = 0
-  while True:
-    for letters in k:
-      digit = int(letters)
-      sum += digit*digit
-      if sum == 1:
-        return True
-      elif sum == n or sum == 4:
-          return False
-      else:
-          k = str(sum)
-          sum = 0
+    def to_one(num):
+        total = 0
+        while num > 0:
+            digit = num % 10
+            total += digit * digit
+            num //= 10
+        return total
+    check = set()
+    while n != 1 and n not in check:
+        check.add(n)
+        n = to_one(n)
+        
+    return True if n==1 else return False
       
 
-print(isHappy(3))
+print(isHappy(19))
